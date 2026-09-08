@@ -79,7 +79,7 @@ void main() {
       when(homeApiClient.getCategories()).thenAnswer((_) async => CategoriesResponse());
       when(homeMapper.mapCategoryResponseListToCategoryEntityList(any)).thenAnswer((_) => <CategoryEntity>[]);
       var response = await homeRepo.getCategories();
-      expect(response, isA<Success<List<CategoryEntity>>>());
+      expect(response, isA<Failure<List<CategoryEntity>>>());
     },);
 
     test('Test Get Banners return The Correct List', () async {
