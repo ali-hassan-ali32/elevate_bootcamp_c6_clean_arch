@@ -21,7 +21,7 @@ class MyApp extends StatelessWidget {
       child: Builder(
         builder: (context) {
           return MaterialApp(
-            title: 'Flutter Dev',
+            title: 'Flutter pr title',
 
             debugShowCheckedModeBanner: false,
             theme: context.watch<AppConfigProvider>().theme,
