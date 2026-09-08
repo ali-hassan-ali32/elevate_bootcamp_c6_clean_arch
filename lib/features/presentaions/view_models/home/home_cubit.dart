@@ -8,7 +8,6 @@ import 'package:elevate_bootcamp_c6_clean_arch/features/domain/entities/product_
 import 'package:elevate_bootcamp_c6_clean_arch/features/domain/use_cases/get_banners_use_case.dart';
 import 'package:elevate_bootcamp_c6_clean_arch/features/domain/use_cases/get_categories_use_case.dart';
 import 'package:elevate_bootcamp_c6_clean_arch/features/domain/use_cases/get_products_by_id_use_case.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:injectable/injectable.dart';
 import 'home_event.dart';

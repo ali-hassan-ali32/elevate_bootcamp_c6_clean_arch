@@ -29,6 +29,7 @@ class _HomeViewState extends State<HomeView> {
     cubit.uiStream.listen((event) {
       switch (event) {
         case ShowMessageEvent():
+          if (!mounted) return;
           showDialog(
             context: context,
             builder: (context) {

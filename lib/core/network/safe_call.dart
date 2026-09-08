@@ -5,7 +5,7 @@ import 'package:elevate_bootcamp_c6_clean_arch/core/network/app_results.dart';
 
 Future<AppResults<T>> safeCall<T>(Future<AppResults<T>> Function() call) async {
   try {
-    return call();
+    return await call();
   } catch (e) {
     var error = handleError(e as Exception);
     return Failure(handleError(e).message, error);

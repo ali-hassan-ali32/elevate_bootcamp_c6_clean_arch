@@ -6,8 +6,6 @@ class Resources<T> {
   T? data;
   Status status;
 
-  Resources._() : status = Status.init;
-
   Resources.init() : status = Status.init;
 
   Resources.loading() : status = Status.loading;

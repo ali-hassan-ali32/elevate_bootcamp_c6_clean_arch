@@ -1,6 +1,5 @@
 import 'package:elevate_bootcamp_c6_clean_arch/core/theme/app_colors.dart';
 import 'package:elevate_bootcamp_c6_clean_arch/core/theme/app_theme.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:injectable/injectable.dart';
 import 'package:shared_preferences/shared_preferences.dart';
