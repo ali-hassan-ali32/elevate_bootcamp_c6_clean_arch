@@ -27,8 +27,8 @@ class MyApp extends StatelessWidget {
             theme: context.watch<AppConfigProvider>().theme,
             home: HomeView(),
           );
-        }
-      )
+        },
+      ),
     );
   }
 }

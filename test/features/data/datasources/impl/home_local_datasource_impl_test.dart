@@ -8,7 +8,7 @@ import 'package:mockito/annotations.dart';
 import 'package:mockito/mockito.dart';
 import 'home_local_datasource_impl_test.mocks.dart';
 
-@GenerateMocks([AssetBundle,Decoder])
+@GenerateMocks([AssetBundle, Decoder])
 void main() {
   late HomeLocalDatasource homeLocalDatasource;
   late MockAssetBundle assetBundle;
@@ -17,42 +17,44 @@ void main() {
   setUpAll(() {
     assetBundle = MockAssetBundle();
     decoder = MockDecoder();
-    getIt.registerFactory<Decoder>(() => decoder,);
-    getIt.registerFactory<AssetBundle>(() => assetBundle,);
-    getIt.registerFactory<HomeLocalDatasource>(() => HomeLocalDatasourceImpl(getIt<AssetBundle>(),getIt<Decoder>()),);
+    getIt.registerFactory<Decoder>(() => decoder);
+    getIt.registerFactory<AssetBundle>(() => assetBundle);
+    getIt.registerFactory<HomeLocalDatasource>(
+      () => HomeLocalDatasourceImpl(getIt<AssetBundle>(), getIt<Decoder>()),
+    );
     homeLocalDatasource = getIt<HomeLocalDatasource>();
-  },);
+  });
 
   group('Test Load Banners Function', () {
     test('Calling Read Banners With Failure Response', () async {
       try {
-        when(assetBundle.loadString(any)).thenAnswer((_) async => '{}',);
-        when(decoder.decode(any)).thenAnswer((_) => {},);
+        when(assetBundle.loadString(any)).thenAnswer((_) async => '{}');
+        when(decoder.decode(any)).thenAnswer((_) => {});
         var response = await homeLocalDatasource.getBanners();
         expect(response.banners, isNull);
-      } catch(e) {
+      } catch (e) {
         expect(e, isA<Exception>());
       }
-    },);
+    });
 
     test('Calling Read Banners With Success Response', () async {
       Map<String, dynamic> data = {
-        "banners" : [
+        "banners": [
           {
-            "image":"assets/images/advertisement_1.png",
-            "title" : "Up To \n25% Off",
-            "categoryName" : "For all Headphones \n& AirPods",
-            "alignment":"end",
-            "buttonBackGroundColor" : 4278206850,
-            "buttonForGroundColor" : 4294967295
-          }
-        ]
+            "image": "assets/images/advertisement_1.png",
+            "title": "Up To \n25% Off",
+            "categoryName": "For all Headphones \n& AirPods",
+            "alignment": "end",
+            "buttonBackGroundColor": 4278206850,
+            "buttonForGroundColor": 4294967295,
+          },
+        ],
       };
-      when(assetBundle.loadString(any)).thenAnswer((_) async => '',);
-      when(decoder.decode(any)).thenAnswer((realInvocation) => data,);
+      when(assetBundle.loadString(any)).thenAnswer((_) async => '');
+      when(decoder.decode(any)).thenAnswer((realInvocation) => data);
       var response = await homeLocalDatasource.getBanners();
       expect(response.banners, isNotEmpty);
       expect(response.banners?.length, equals(1));
-    },);
-  },);
+    });
+  });
 }

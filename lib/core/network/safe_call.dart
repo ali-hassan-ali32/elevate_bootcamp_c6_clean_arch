@@ -5,16 +5,16 @@ import 'package:elevate_bootcamp_c6_clean_arch/core/network/app_results.dart';
 
 Future<AppResults<T>> safeCall<T>(Future<AppResults<T>> Function() call) async {
   try {
-    return call();
-  } catch(e) {
+    return await call();
+  } catch (e) {
     var error = handleError(e as Exception);
     return Failure(handleError(e).message, error);
   }
 }
 
 AppError handleError(Exception exception) {
-  if(exception is DioException) {
-    switch(exception.type) {
+  if (exception is DioException) {
+    switch (exception.type) {
       case DioExceptionType.connectionTimeout:
       case DioExceptionType.sendTimeout:
       case DioExceptionType.receiveTimeout:
@@ -22,7 +22,9 @@ AppError handleError(Exception exception) {
       case DioExceptionType.badCertificate:
         return BadCertificateAppError('Bad Certificate Error', exception);
       case DioExceptionType.badResponse:
-        return BadResponseAppError(exception.response?.statusMessage ?? 'Something Went Wrong');
+        return BadResponseAppError(
+          exception.response?.statusMessage ?? 'Something Went Wrong',
+        );
       case DioExceptionType.cancel:
       case DioExceptionType.connectionError:
       case DioExceptionType.unknown:

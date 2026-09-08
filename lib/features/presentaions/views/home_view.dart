@@ -21,23 +21,27 @@ class _HomeViewState extends State<HomeView> {
   void initState() {
     super.initState();
     debugPrint('OOOO The Home Page has Reborn OOOO');
-    cubit.doEvent(GetHomeDataEvent(GetProductsByCategoryIdEvent('6439d5b90049ad0b52b90048')));
+    cubit.doEvent(
+      GetHomeDataEvent(
+        GetProductsByCategoryIdEvent('6439d5b90049ad0b52b90048'),
+      ),
+    );
     cubit.uiStream.listen((event) {
-      switch(event) {
+      switch (event) {
         case ShowMessageEvent():
+          if (!mounted) return;
           showDialog(
-              context: context,
-              builder: (context) {
-                return AlertDialog(title: Text(event.message),);
-              },
+            context: context,
+            builder: (context) {
+              return AlertDialog(title: Text(event.message));
+            },
           );
       }
-    },);
+    });
   }
 
   @override
   Widget build(BuildContext context) {
-
     return BlocProvider.value(
       value: cubit,
       child: Scaffold(
@@ -47,46 +51,50 @@ class _HomeViewState extends State<HomeView> {
               mainAxisAlignment: MainAxisAlignment.center,
               crossAxisAlignment: CrossAxisAlignment.center,
               children: [
-
-                switch(state.categoryResources.status) {
+                switch (state.categoryResources.status) {
                   Status.init => Placeholder(),
                   Status.loading => CircularProgressIndicator(),
                   Status.failure => Text(state.categoryResources.message ?? ''),
-                  Status.success => Center(child: Text(state.categoryResources.data![1].name),),
-                  Status.empty => Center(child: Text('Empty Categories'),),
+                  Status.success => Center(
+                    child: Text(state.categoryResources.data![1].name),
+                  ),
+                  Status.empty => Center(child: Text('Empty Categories')),
                 },
 
-                switch(state.bannerResources.status) {
+                switch (state.bannerResources.status) {
                   Status.init => Placeholder(),
                   Status.loading => CircularProgressIndicator(),
                   Status.failure => Text(state.bannerResources.message ?? ''),
-                  Status.success => Center(child: Text(state.bannerResources.data![0].title ),),
-                  Status.empty => Center(child: Text('Empty Banners'),),
+                  Status.success => Center(
+                    child: Text(state.bannerResources.data![0].title),
+                  ),
+                  Status.empty => Center(child: Text('Empty Banners')),
                 },
 
-                switch(state.productResources.status) {
+                switch (state.productResources.status) {
                   Status.init => Placeholder(),
                   Status.loading => CircularProgressIndicator(),
                   Status.failure => Text(state.productResources.message ?? ''),
-                  Status.success => Center(child: Text(state.productResources.data![0].title),),
-                  Status.empty => Center(child: Text('Empty Products'),),
+                  Status.success => Center(
+                    child: Text(state.productResources.data![0].title),
+                  ),
+                  Status.empty => Center(child: Text('Empty Products')),
                 },
 
                 ElevatedButton(
-                    onPressed: () async {
-                      final provider = getIt<AppConfigProvider>();
+                  onPressed: () async {
+                    final provider = getIt<AppConfigProvider>();
 
-                      await provider.changeThemeMode(
-                        provider.getCurrentTheme() == ThemeOption.customer
-                            ? ThemeOption.handyman
-                            : ThemeOption.customer
-                      );
+                    await provider.changeThemeMode(
+                      provider.getCurrentTheme() == ThemeOption.customer
+                          ? ThemeOption.handyman
+                          : ThemeOption.customer,
+                    );
 
-                      debugPrint('XXXXXX ${provider.getCurrentTheme()} XXXXXX');
-                    },
-                    child: Text('Change Theme')
+                    debugPrint('XXXXXX ${provider.getCurrentTheme()} XXXXXX');
+                  },
+                  child: Text('Change Theme'),
                 ),
-
               ],
             );
           },

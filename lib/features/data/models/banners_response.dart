@@ -1,6 +1,5 @@
 class BannersResponse {
-  BannersResponse({
-    this.banners,});
+  BannersResponse({this.banners});
 
   BannersResponse.fromJson(dynamic json) {
     if (json['banners'] != null) {
@@ -19,7 +18,6 @@ class BannersResponse {
     }
     return map;
   }
-
 }
 
 class BannerResponse {
@@ -29,7 +27,8 @@ class BannerResponse {
     this.categoryName,
     this.alignment,
     this.buttonBackGroundColor,
-    this.buttonForGroundColor,});
+    this.buttonForGroundColor,
+  });
 
   BannerResponse.fromJson(dynamic json) {
     image = json['image'];
@@ -56,5 +55,4 @@ class BannerResponse {
     map['buttonForGroundColor'] = buttonForGroundColor;
     return map;
   }
-
 }

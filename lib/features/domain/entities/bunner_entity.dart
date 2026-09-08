@@ -8,6 +8,6 @@ class BannerEntity {
   BannerEntity({
     required this.title,
     required this.image,
-    required this.alignment
+    required this.alignment,
   });
 }

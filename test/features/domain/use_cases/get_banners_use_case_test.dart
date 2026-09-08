@@ -1,4 +1,3 @@
-import 'package:elevate_bootcamp_c6_clean_arch/config/di/di.dart';
 import 'package:elevate_bootcamp_c6_clean_arch/core/errors/app_error.dart';
 import 'package:elevate_bootcamp_c6_clean_arch/core/network/app_results.dart';
 import 'package:elevate_bootcamp_c6_clean_arch/features/domain/entities/bunner_entity.dart';

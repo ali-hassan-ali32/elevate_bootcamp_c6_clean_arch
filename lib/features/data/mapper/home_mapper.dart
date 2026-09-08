@@ -10,46 +10,58 @@ import '../models/categories_response.dart';
 
 @lazySingleton
 class HomeMapper {
-  List<BannerEntity> mapBannersResponseToBannersEntityList(List<BannerResponse> banners) {
-    return banners.map((banner) => mapBannerResponseToBannerEntity(banner)).toList();
+  List<BannerEntity> mapBannersResponseToBannersEntityList(
+    List<BannerResponse> banners,
+  ) {
+    return banners
+        .map((banner) => mapBannerResponseToBannerEntity(banner))
+        .toList();
   }
 
   BannerEntity mapBannerResponseToBannerEntity(BannerResponse banner) {
     return BannerEntity(
-        title: banner.title ?? 'No Title',
-        image: banner.image ?? '',
-        alignment: mapAlignment(banner.alignment ?? '')
+      title: banner.title ?? 'No Title',
+      image: banner.image ?? '',
+      alignment: mapAlignment(banner.alignment ?? ''),
     );
   }
 
   Alignment mapAlignment(String aliment) {
-    return switch(aliment) {
+    return switch (aliment) {
       'start' => Alignment.bottomCenter,
       'end' => Alignment.bottomLeft,
-      _ => Alignment.center
+      _ => Alignment.center,
     };
   }
 
-
-  List<ProductEntity> mapProductsResponseListToProductEntityList(List<ProductResponse> products) {
-    return products.map((product) => mapProductResponseToProductEntity(product)).toList();
+  List<ProductEntity> mapProductsResponseListToProductEntityList(
+    List<ProductResponse> products,
+  ) {
+    return products
+        .map((product) => mapProductResponseToProductEntity(product))
+        .toList();
   }
 
   ProductEntity mapProductResponseToProductEntity(ProductResponse product) {
     return ProductEntity(
-        title: product.title ?? 'No Title',
-        images: product.images ?? [],
-        slug: product.slug ?? '',
-        ratingsQuantity: product.ratingsQuantity ?? 0
+      title: product.title ?? 'No Title',
+      images: product.images ?? [],
+      slug: product.slug ?? '',
+      ratingsQuantity: product.ratingsQuantity ?? 0,
     );
   }
 
-  List<CategoryEntity> mapCategoryResponseListToCategoryEntityList(List<CategoryResponse> categories,) {
-    return categories.map((category) => CategoryEntity(
-        id: category.id ?? '',
-        name: category.name ?? '',
-        image: category.image ?? '',
-      ),
-    ).toList();
+  List<CategoryEntity> mapCategoryResponseListToCategoryEntityList(
+    List<CategoryResponse> categories,
+  ) {
+    return categories
+        .map(
+          (category) => CategoryEntity(
+            id: category.id ?? '',
+            name: category.name ?? '',
+            image: category.image ?? '',
+          ),
+        )
+        .toList();
   }
 }

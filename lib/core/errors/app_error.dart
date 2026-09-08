@@ -18,7 +18,7 @@ class ServerErrorAppError extends AppError {
 }
 
 class IgnoreAppError extends AppError {
-  IgnoreAppError(): super(null, null);
+  IgnoreAppError() : super(null, null);
 }
 
 class BadResponseAppError extends AppError {

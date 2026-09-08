@@ -10,14 +10,14 @@ sealed class AppResults<T> {
 }
 
 class Success<T> extends AppResults<T> {
-
   Success(T? data) : super(data: data, appError: null);
 }
 
 class Failure<T> extends AppResults<T> {
-  Failure(String? errorMessage, AppError? appError) : super(
-      data: null,
-      appError: appError,
-      // errorMessage: errorMessage
-  );
+  Failure(String? errorMessage, AppError? appError)
+    : super(
+        data: null,
+        appError: appError,
+        // errorMessage: errorMessage
+      );
 }
