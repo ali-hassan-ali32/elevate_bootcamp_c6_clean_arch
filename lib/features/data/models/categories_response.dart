@@ -1,12 +1,11 @@
 class CategoriesResponse {
-  CategoriesResponse({
-    this.results,
-    this.metadata,
-    this.data,});
+  CategoriesResponse({this.results, this.metadata, this.data});
 
   CategoriesResponse.fromJson(dynamic json) {
     results = json['results'];
-    metadata = json['metadata'] != null ? Metadata.fromJson(json['metadata']) : null;
+    metadata = json['metadata'] != null
+        ? Metadata.fromJson(json['metadata'])
+        : null;
     if (json['data'] != null) {
       data = [];
       json['data'].forEach((v) {
@@ -29,7 +28,6 @@ class CategoriesResponse {
     }
     return map;
   }
-
 }
 
 class CategoryResponse {
@@ -39,7 +37,8 @@ class CategoryResponse {
     this.slug,
     this.image,
     this.createdAt,
-    this.updatedAt,});
+    this.updatedAt,
+  });
 
   CategoryResponse.fromJson(dynamic json) {
     id = json['_id'];
@@ -66,14 +65,10 @@ class CategoryResponse {
     map['updatedAt'] = updatedAt;
     return map;
   }
-
 }
 
 class Metadata {
-  Metadata({
-    this.currentPage,
-    this.numberOfPages,
-    this.limit,});
+  Metadata({this.currentPage, this.numberOfPages, this.limit});
 
   Metadata.fromJson(dynamic json) {
     currentPage = json['currentPage'];
@@ -91,5 +86,4 @@ class Metadata {
     map['limit'] = limit;
     return map;
   }
-
 }

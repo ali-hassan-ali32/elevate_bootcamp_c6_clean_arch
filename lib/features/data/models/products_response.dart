@@ -1,12 +1,11 @@
 class ProductsResponse {
-  ProductsResponse({
-    this.results,
-    this.metadata,
-    this.data,});
+  ProductsResponse({this.results, this.metadata, this.data});
 
   ProductsResponse.fromJson(dynamic json) {
     results = json['results'];
-    metadata = json['metadata'] != null ? Metadata.fromJson(json['metadata']) : null;
+    metadata = json['metadata'] != null
+        ? Metadata.fromJson(json['metadata'])
+        : null;
     if (json['data'] != null) {
       data = [];
       json['data'].forEach((v) {
@@ -29,7 +28,6 @@ class ProductsResponse {
     }
     return map;
   }
-
 }
 
 class ProductResponse {
@@ -49,7 +47,8 @@ class ProductResponse {
     this.brand,
     this.ratingsAverage,
     this.createdAt,
-    this.updatedAt,});
+    this.updatedAt,
+  });
 
   ProductResponse.fromJson(dynamic json) {
     sold = json['sold'];
@@ -68,7 +67,9 @@ class ProductResponse {
     quantity = json['quantity'];
     price = json['price'];
     imageCover = json['imageCover'];
-    category = json['category'] != null ? Category.fromJson(json['category']) : null;
+    category = json['category'] != null
+        ? Category.fromJson(json['category'])
+        : null;
     brand = json['brand'] != null ? Brand.fromJson(json['brand']) : null;
     ratingsAverage = json['ratingsAverage'];
     createdAt = json['createdAt'];
@@ -118,15 +119,10 @@ class ProductResponse {
     map['id'] = id;
     return map;
   }
-
 }
 
 class Brand {
-  Brand({
-    this.id,
-    this.name,
-    this.slug,
-    this.image,});
+  Brand({this.id, this.name, this.slug, this.image});
 
   Brand.fromJson(dynamic json) {
     id = json['_id'];
@@ -147,15 +143,10 @@ class Brand {
     map['image'] = image;
     return map;
   }
-
 }
 
 class Category {
-  Category({
-    this.id,
-    this.name,
-    this.slug,
-    this.image,});
+  Category({this.id, this.name, this.slug, this.image});
 
   Category.fromJson(dynamic json) {
     id = json['_id'];
@@ -176,15 +167,10 @@ class Category {
     map['image'] = image;
     return map;
   }
-
 }
 
 class Subcategory {
-  Subcategory({
-    this.id,
-    this.name,
-    this.slug,
-    this.category,});
+  Subcategory({this.id, this.name, this.slug, this.category});
 
   Subcategory.fromJson(dynamic json) {
     id = json['_id'];
@@ -205,14 +191,10 @@ class Subcategory {
     map['category'] = category;
     return map;
   }
-
 }
 
 class Metadata {
-  Metadata({
-    this.currentPage,
-    this.numberOfPages,
-    this.limit,});
+  Metadata({this.currentPage, this.numberOfPages, this.limit});
 
   Metadata.fromJson(dynamic json) {
     currentPage = json['currentPage'];
@@ -230,5 +212,4 @@ class Metadata {
     map['limit'] = limit;
     return map;
   }
-
 }

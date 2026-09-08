@@ -1,4 +1,4 @@
-enum Status {init, loading, failure, success, empty}
+enum Status { init, loading, failure, success, empty }
 
 class Resources<T> {
   String? message;
@@ -6,7 +6,7 @@ class Resources<T> {
   T? data;
   Status status;
 
-  Resources. _() : status = Status.init;
+  Resources._() : status = Status.init;
 
   Resources.init() : status = Status.init;
 

@@ -8,6 +8,6 @@ class GetProductsByIdUseCase {
   final HomeRepo _homeRepo;
   GetProductsByIdUseCase(this._homeRepo);
 
-  Future<AppResults<List<ProductEntity>>> call(String categoryId)
-    => _homeRepo.getProducts(categoryId);
+  Future<AppResults<List<ProductEntity>>> call(String categoryId) =>
+      _homeRepo.getProducts(categoryId);
 }

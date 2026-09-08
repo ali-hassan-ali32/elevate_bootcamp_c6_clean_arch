@@ -7,7 +7,7 @@ import 'package:flutter/services.dart';
 import 'package:injectable/injectable.dart';
 
 @Injectable(as: HomeLocalDatasource)
-class HomeLocalDatasourceImpl extends HomeLocalDatasource{
+class HomeLocalDatasourceImpl extends HomeLocalDatasource {
   final AssetBundle _assetBundle;
   final Decoder _decoder;
   HomeLocalDatasourceImpl(this._assetBundle, this._decoder);

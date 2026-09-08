@@ -11,18 +11,18 @@ class HomeState {
   HomeState({
     required this.productResources,
     required this.bannerResources,
-    required this.categoryResources
+    required this.categoryResources,
   });
 
   HomeState copyWith({
     Resources<List<ProductEntity>>? productResources,
     Resources<List<CategoryEntity>>? categoryResources,
-    Resources<List<BannerEntity>>? bannerResources
+    Resources<List<BannerEntity>>? bannerResources,
   }) {
     return HomeState(
-        productResources: productResources ?? this.productResources,
-        bannerResources: bannerResources ?? this.bannerResources,
-        categoryResources: categoryResources ?? this.categoryResources
+      productResources: productResources ?? this.productResources,
+      bannerResources: bannerResources ?? this.bannerResources,
+      categoryResources: categoryResources ?? this.categoryResources,
     );
   }
 }

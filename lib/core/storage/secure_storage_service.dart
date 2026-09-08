@@ -9,10 +9,7 @@ class SecureStorageService {
   static const String tokenKey = 'token';
 
   Future<void> saveToken(String token) async {
-    await _secureStorage.write(
-        key: tokenKey,
-        value: token
-    );
+    await _secureStorage.write(key: tokenKey, value: token);
   }
 
   Future<String?> getToken() async {

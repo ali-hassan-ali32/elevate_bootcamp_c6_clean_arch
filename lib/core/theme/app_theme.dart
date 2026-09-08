@@ -1,7 +1,6 @@
 import 'package:elevate_bootcamp_c6_clean_arch/core/theme/app_colors.dart';
 import 'package:flutter/material.dart';
 
-
 class AppTheme {
   final AppColors _appColors;
 
@@ -42,9 +41,7 @@ class AppTheme {
     cardTheme: CardThemeData(
       color: _appColors.white,
       elevation: 0,
-      shape: RoundedRectangleBorder(
-        borderRadius: BorderRadius.circular(16),
-      ),
+      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(16)),
     ),
 
     dividerColor: _appColors.gray,
@@ -62,23 +59,15 @@ class AppTheme {
       ),
       focusedBorder: OutlineInputBorder(
         borderRadius: BorderRadius.circular(12),
-        borderSide: BorderSide(
-          color: _appColors.primary,
-          width: 2,
-        ),
+        borderSide: BorderSide(color: _appColors.primary, width: 2),
       ),
       errorBorder: OutlineInputBorder(
         borderRadius: BorderRadius.circular(12),
-        borderSide: BorderSide(
-          color: _appColors.errorsColor,
-        ),
+        borderSide: BorderSide(color: _appColors.errorsColor),
       ),
       focusedErrorBorder: OutlineInputBorder(
         borderRadius: BorderRadius.circular(12),
-        borderSide: BorderSide(
-          color: _appColors.errorsColor,
-          width: 2,
-        ),
+        borderSide: BorderSide(color: _appColors.errorsColor, width: 2),
       ),
     ),
 
@@ -89,9 +78,7 @@ class AppTheme {
         disabledBackgroundColor: _appColors.gray,
         disabledForegroundColor: _appColors.white,
         elevation: 0,
-        shape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.circular(12),
-        ),
+        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
       ),
     ),
 
@@ -99,16 +86,12 @@ class AppTheme {
       style: OutlinedButton.styleFrom(
         foregroundColor: _appColors.primary,
         side: BorderSide(color: _appColors.primary),
-        shape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.circular(12),
-        ),
+        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
       ),
     ),
 
     textButtonTheme: TextButtonThemeData(
-      style: TextButton.styleFrom(
-        foregroundColor: _appColors.primary,
-      ),
+      style: TextButton.styleFrom(foregroundColor: _appColors.primary),
     ),
 
     textTheme: TextTheme(

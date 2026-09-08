@@ -1,4 +1,5 @@
 sealed class HomeEvent {}
+
 sealed class HomeUiEvent {}
 
 //******************** Home Events
@@ -7,7 +8,9 @@ class GetProductsByCategoryIdEvent extends HomeEvent {
 
   GetProductsByCategoryIdEvent(this.categoryId);
 }
+
 class GetCategoriesEvent extends HomeEvent {}
+
 class GetBannersEvent extends HomeEvent {}
 
 class GetHomeDataEvent extends HomeEvent {

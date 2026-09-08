@@ -14,26 +14,23 @@ import 'package:injectable/injectable.dart';
 import '../../domain/repo/home_repo.dart';
 
 @Injectable(as: HomeRepo)
-class HomeRepoImpl extends HomeRepo{
-  
+class HomeRepoImpl extends HomeRepo {
   final HomeLocalDatasource _localDatasource;
   final HomeApiClient _homeApiClient;
   final HomeMapper _homeMapper;
-  
-  HomeRepoImpl(
-      this._homeMapper,
-      this._homeApiClient,
-      this._localDatasource
-      );
+
+  HomeRepoImpl(this._homeMapper, this._homeApiClient, this._localDatasource);
 
   @override
   Future<AppResults<List<BannerEntity>>> getBanners() {
     return safeCall(() async {
       var response = await _localDatasource.getBanners();
       return Success(
-          _homeMapper.mapBannersResponseToBannersEntityList(response.banners ?? [])
+        _homeMapper.mapBannersResponseToBannersEntityList(
+          response.banners ?? [],
+        ),
       );
-    },);
+    });
   }
 
   @override
@@ -41,9 +38,11 @@ class HomeRepoImpl extends HomeRepo{
     return safeCall(() async {
       var response = await _homeApiClient.getCategories();
       return Success(
-        _homeMapper.mapCategoryResponseListToCategoryEntityList(response.data ?? [])
+        _homeMapper.mapCategoryResponseListToCategoryEntityList(
+          response.data ?? [],
+        ),
       );
-    },);
+    });
   }
 
   @override
@@ -51,8 +50,10 @@ class HomeRepoImpl extends HomeRepo{
     return safeCall(() async {
       var response = await _homeApiClient.getProducts(categoryId);
       return Success(
-        _homeMapper.mapProductsResponseListToProductEntityList(response.data ?? [])
+        _homeMapper.mapProductsResponseListToProductEntityList(
+          response.data ?? [],
+        ),
       );
-    },);
+    });
   }
 }

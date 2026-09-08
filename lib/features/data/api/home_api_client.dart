@@ -11,12 +11,13 @@ part 'home_api_client.g.dart';
 @injectable
 @RestApi()
 abstract class HomeApiClient {
-
   @factoryMethod
   factory HomeApiClient(Dio dio) = _HomeApiClient;
 
   @GET(ApiConstants.productsByCategory)
-  Future<ProductsResponse> getProducts(@Query(ApiConstants.qCategoryId) String categoryId);
+  Future<ProductsResponse> getProducts(
+    @Query(ApiConstants.qCategoryId) String categoryId,
+  );
 
   @GET(ApiConstants.categories)
   Future<CategoriesResponse> getCategories();

@@ -8,6 +8,6 @@ class ProductEntity {
     required this.title,
     required this.images,
     required this.slug,
-    required this.ratingsQuantity
+    required this.ratingsQuantity,
   });
 }

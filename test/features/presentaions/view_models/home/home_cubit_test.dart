@@ -52,12 +52,15 @@ void main() {
     );
 
     // Default Stubs أساسية لمنع الـ MissingDummyValueError أثناء تنفيذ doEvent
-    when(getProductsByIdUseCase.call(any))
-        .thenAnswer((_) async => Success<List<ProductEntity>>([]));
-    when(getCategoriesUseCase.call())
-        .thenAnswer((_) async => Success<List<CategoryEntity>>([]));
-    when(getBannersUseCase.call())
-        .thenAnswer((_) async => Success<List<BannerEntity>>([]));
+    when(
+      getProductsByIdUseCase.call(any),
+    ).thenAnswer((_) async => Success<List<ProductEntity>>([]));
+    when(
+      getCategoriesUseCase.call(),
+    ).thenAnswer((_) async => Success<List<CategoryEntity>>([]));
+    when(
+      getBannersUseCase.call(),
+    ).thenAnswer((_) async => Success<List<BannerEntity>>([]));
   });
 
   tearDown(() {
@@ -65,7 +68,6 @@ void main() {
   });
 
   group('Test Load Home Data Functionality', () {
-
     // -------------------------------------------------------------------------
     // 🖼️ 1. TEST BANNERS
     // -------------------------------------------------------------------------
@@ -73,11 +75,14 @@ void main() {
       test('Test Get Banners Success', () async {
         // Arrange
         expect(homeCubit.state.bannerResources.status, equals(Status.init));
-        when(getBannersUseCase.call())
-            .thenAnswer((_) async => Success<List<BannerEntity>>([]));
+        when(
+          getBannersUseCase.call(),
+        ).thenAnswer((_) async => Success<List<BannerEntity>>([]));
 
         // Act
-        await homeCubit.doEvent(GetHomeDataEvent(GetProductsByCategoryIdEvent('')));
+        await homeCubit.doEvent(
+          GetHomeDataEvent(GetProductsByCategoryIdEvent('')),
+        );
 
         // Assert
         expect(homeCubit.state.bannerResources.status, equals(Status.success));
@@ -86,11 +91,15 @@ void main() {
 
       test('Test Get Banners Failure', () async {
         // Arrange
-        when(getBannersUseCase.call())
-            .thenAnswer((_) async => Failure<List<BannerEntity>>('Server Error',IgnoreAppError()));
+        when(getBannersUseCase.call()).thenAnswer(
+          (_) async =>
+              Failure<List<BannerEntity>>('Server Error', IgnoreAppError()),
+        );
 
         // Act
-        await homeCubit.doEvent(GetHomeDataEvent(GetProductsByCategoryIdEvent('')));
+        await homeCubit.doEvent(
+          GetHomeDataEvent(GetProductsByCategoryIdEvent('')),
+        );
 
         // Assert
         expect(homeCubit.state.bannerResources.status, equals(Status.failure));
@@ -104,26 +113,40 @@ void main() {
       test('Test Get Categories Success', () async {
         // Arrange
         expect(homeCubit.state.categoryResources.status, equals(Status.init));
-        when(getCategoriesUseCase.call())
-            .thenAnswer((_) async => Success<List<CategoryEntity>>([]));
+        when(
+          getCategoriesUseCase.call(),
+        ).thenAnswer((_) async => Success<List<CategoryEntity>>([]));
 
         // Act
-        await homeCubit.doEvent(GetHomeDataEvent(GetProductsByCategoryIdEvent('')));
+        await homeCubit.doEvent(
+          GetHomeDataEvent(GetProductsByCategoryIdEvent('')),
+        );
 
         // Assert
-        expect(homeCubit.state.categoryResources.status, equals(Status.success));
+        expect(
+          homeCubit.state.categoryResources.status,
+          equals(Status.success),
+        );
         verify(getCategoriesUseCase.call()).called(1);
       });
 
       test('Test Get Categories Failure', () async {
         // Arrange
-        when(getCategoriesUseCase.call()).thenAnswer((_) async => Failure<List<CategoryEntity>>('Network Error',IgnoreAppError()));
+        when(getCategoriesUseCase.call()).thenAnswer(
+          (_) async =>
+              Failure<List<CategoryEntity>>('Network Error', IgnoreAppError()),
+        );
 
         // Act
-        await homeCubit.doEvent(GetHomeDataEvent(GetProductsByCategoryIdEvent('')));
+        await homeCubit.doEvent(
+          GetHomeDataEvent(GetProductsByCategoryIdEvent('')),
+        );
 
         // Assert
-        expect(homeCubit.state.categoryResources.status, equals(Status.failure));
+        expect(
+          homeCubit.state.categoryResources.status,
+          equals(Status.failure),
+        );
       });
     });
 
@@ -134,11 +157,14 @@ void main() {
       test('Test Get Products Success', () async {
         // Arrange
         expect(homeCubit.state.productResources.status, equals(Status.init));
-        when(getProductsByIdUseCase.call(any))
-            .thenAnswer((_) async => Success<List<ProductEntity>>([]));
+        when(
+          getProductsByIdUseCase.call(any),
+        ).thenAnswer((_) async => Success<List<ProductEntity>>([]));
 
         // Act
-        await homeCubit.doEvent(GetHomeDataEvent(GetProductsByCategoryIdEvent('')));
+        await homeCubit.doEvent(
+          GetHomeDataEvent(GetProductsByCategoryIdEvent('')),
+        );
 
         // Assert
         expect(homeCubit.state.productResources.status, equals(Status.success));
@@ -147,16 +173,19 @@ void main() {
 
       test('Test Get Products Failure', () async {
         // Arrange
-        when(getProductsByIdUseCase.call(any))
-            .thenAnswer((_) async => Failure<List<ProductEntity>>('Not Found', IgnoreAppError()));
+        when(getProductsByIdUseCase.call(any)).thenAnswer(
+          (_) async =>
+              Failure<List<ProductEntity>>('Not Found', IgnoreAppError()),
+        );
 
         // Act
-        await homeCubit.doEvent(GetHomeDataEvent(GetProductsByCategoryIdEvent('')));
+        await homeCubit.doEvent(
+          GetHomeDataEvent(GetProductsByCategoryIdEvent('')),
+        );
 
         // Assert
         expect(homeCubit.state.productResources.status, equals(Status.failure));
       });
     });
-
   });
 }

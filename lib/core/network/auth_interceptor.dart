@@ -9,7 +9,10 @@ class AuthInterceptor extends Interceptor {
   AuthInterceptor(this._storageService);
 
   @override
-  Future<void> onRequest(RequestOptions options, RequestInterceptorHandler handler) async {
+  Future<void> onRequest(
+    RequestOptions options,
+    RequestInterceptorHandler handler,
+  ) async {
     final token = await _storageService.getToken();
 
     if (token != null && token.isNotEmpty) {
@@ -20,7 +23,10 @@ class AuthInterceptor extends Interceptor {
   }
 
   @override
-  void onResponse(Response<dynamic> response, ResponseInterceptorHandler handler) {
+  void onResponse(
+    Response<dynamic> response,
+    ResponseInterceptorHandler handler,
+  ) {
     handler.next(response);
   }
 

@@ -18,7 +18,7 @@ class AppConfigProvider extends ChangeNotifier {
   Future<void> changeThemeMode(ThemeOption themeOption) async {
     await _sharedPreferences.setString('theme', themeOption.name);
 
-    _appColors = switch(themeOption) {
+    _appColors = switch (themeOption) {
       ThemeOption.customer => CustomerThemeColors(),
       ThemeOption.handyman => HandymanThemeColors(),
     };
@@ -45,22 +45,27 @@ class AppConfigProvider extends ChangeNotifier {
   }
 
   Future<void> setThemeMode() async {
-    ThemeOption currentTheme = ThemeOption.fromString(_sharedPreferences.getString('theme') ?? '');
+    ThemeOption currentTheme = ThemeOption.fromString(
+      _sharedPreferences.getString('theme') ?? '',
+    );
     debugPrint('❌❌❌: The Default Theme Mode: ${currentTheme.name} : ❌❌❌');
     await changeThemeMode(currentTheme);
   }
 
   ThemeOption getCurrentTheme() {
-    ThemeOption currentTheme = ThemeOption.fromString(_sharedPreferences.getString('theme') ?? '');
+    ThemeOption currentTheme = ThemeOption.fromString(
+      _sharedPreferences.getString('theme') ?? '',
+    );
     return currentTheme;
   }
 }
 
 enum ThemeOption {
-  customer, handyman, ;
+  customer,
+  handyman;
 
   static ThemeOption fromString(String themeStr) {
-    switch(themeStr) {
+    switch (themeStr) {
       case 'customer':
         return ThemeOption.customer;
       case 'handyman':
