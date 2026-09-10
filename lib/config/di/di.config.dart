@@ -10,7 +10,6 @@
 
 // ignore_for_file: no_leading_underscores_for_library_prefixes
 import 'package:dio/dio.dart' as _i361;
-import 'package:flutter/cupertino.dart' as _i719;
 import 'package:flutter/services.dart' as _i281;
 import 'package:flutter_secure_storage/flutter_secure_storage.dart' as _i558;
 import 'package:get_it/get_it.dart' as _i174;
@@ -55,7 +54,7 @@ extension GetItInjectableX on _i174.GetIt {
       preResolve: true,
     );
     gh.factory<_i1050.Decoder>(() => _i1050.Decoder());
-    gh.lazySingleton<_i719.AssetBundle>(
+    gh.lazySingleton<_i281.AssetBundle>(
       () => assetBundleModule.provideAssetBundle(),
     );
     gh.lazySingleton<_i361.Dio>(() => networkModule.provideDio());
