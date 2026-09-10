@@ -6,7 +6,7 @@ plugins {
 }
 
 android {
-    namespace = "com.example.elevate_bootcamp_c6_clean_arch"
+    namespace = "com.example.elevate_bootcamp_c6_clean_arch2"
     compileSdk = flutter.compileSdkVersion
     ndkVersion = flutter.ndkVersion
 

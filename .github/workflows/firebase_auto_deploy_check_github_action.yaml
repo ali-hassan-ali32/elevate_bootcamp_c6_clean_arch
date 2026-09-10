@@ -1,0 +1,49 @@
+name: Flutter Firebase App Distribution
+
+on:
+  push:
+    branches:
+      - release/*
+
+jobs:
+  build-and-deploy-android:
+    name: Firebase deploy APK App
+    runs-on: ubuntu-latest
+
+    steps:
+      # Step 1: Checkout the source repository code
+      - name: Checkout Code
+        uses: actions/checkout@v4
+
+      # Step 2: Set up the Java environment required for Android compilation
+      - name: Set up Java
+        uses: actions/setup-java@v4
+        with:
+          java-version: '17'
+
+      # Step 3: Install the Flutter SDK environment
+      - name: Set up Flutter
+        uses: subosito/flutter-action@v2
+        with:
+          flutter-version: '3.44.9'
+          cache: true
+
+      # Step 4: Fetch project dependencies
+      - name: Install Dependencies
+        run: flutter pub get
+
+      - name: Generate files
+        run: dart run build_runner build --delete-conflicting-outputs
+
+      # Step 5: Build a production release APK
+      - name: Build APK
+        run: flutter build apk --release
+
+      # Step 6: Deploy the compiled binary to Firebase App Distribution
+      - name: Upload to Firebase App Distribution
+        uses: wzieba/Firebase-Distribution-Github-Action@v1
+        with:
+          appId: ${{ secrets.FIREBASE_APP_ID_ANDROID }}
+          serviceCredentialsFileContent: ${{ secrets.CREDENTIAL_FILE_CONTENT }}
+          groups: qa-team # Matches the tester group alias created in Firebase
+          file: build/app/outputs/apk/release/app-release.apk

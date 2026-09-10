@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "177938951587",
+    "project_id": "test-deployment-57ae6",
+    "storage_bucket": "test-deployment-57ae6.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:177938951587:android:491e2c00bd20ed2969be16",
+        "android_client_info": {
+          "package_name": "com.example.elevate_bootcamp_c6_clean_arch2"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBnXBHHTtXiMqCIKdE1p301chhtP87Qhxc"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
