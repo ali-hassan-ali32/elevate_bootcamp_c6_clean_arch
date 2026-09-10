@@ -48,5 +48,4 @@ jobs:
         with:
           appId: ${{ secrets.FIREBASE_APP_ID_ANDROID }}
           serviceCredentialsFileContent: ${{ secrets.CREDENTIAL_FILE_CONTENT }}
-          groups: qa-team
           file: build/app/outputs/flutter-apk/app-release.apk
